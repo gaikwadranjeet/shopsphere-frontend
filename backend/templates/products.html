@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-title">
+
+    <h1>Products</h1>
+
+    <p>Browse our complete catalogue.</p>
+
+</section>
+
+<section class="product-container">
+
+{% for product in products %}
+
+<div class="product-card">
+
+    <h3>{{ product.name }}</h3>
+
+    <p class="price">{{ product.price }}</p>
+
+    <a href="#" class="btn btn-primary">
+        View Details
+    </a>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+{% endblock %}
