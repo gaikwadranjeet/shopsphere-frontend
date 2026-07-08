@@ -512,3 +512,25 @@ footer hr{
     color:#bbb;
 
 }
+
+/* ===========================
+   Common Page Title
+=========================== */
+
+.page-title{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    background:white;
+
+}
+
+.page-title h1{
+
+    font-size:2.5rem;
+
+    margin-bottom:15px;
+
+}
