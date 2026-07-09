@@ -1,36 +1,24 @@
-from flask import Flask, render_template
-from data.products import products
+from flask import Flask
+from config import Config
+from extensions import db
+from routes.admin_routes import admin_bp
 
 app = Flask(__name__)
 
+app.config.from_object(Config)
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+db.init_app(app)
 
+# Import models AFTER db initialization
+from models.product import Product
 
-@app.route("/products")
-def products_page():
-    return render_template(
-        "products.html",
-        products=products
-    )
+# Import routes
+from routes.home_routes import home_bp
+from routes.product_routes import product_bp
 
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-
-@app.route("/cart")
-def cart():
-    return render_template("cart.html")
-
-
+# Register blueprints
+app.register_blueprint(home_bp)
+app.register_blueprint(product_bp)
+app.register_blueprint(admin_bp)
 if __name__ == "__main__":
     app.run(debug=True)

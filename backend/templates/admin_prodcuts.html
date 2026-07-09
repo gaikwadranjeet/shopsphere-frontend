@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-title">
+
+<h1>Admin Dashboard</h1>
+
+<p>Manage Products</p>
+
+</section>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Price</th>
+<th>Action</th>
+
+</tr>
+
+{% for product in products %}
+
+<tr>
+
+<td>{{ product.id }}</td>
+
+<td>{{ product.name }}</td>
+
+<td>₹{{ "{:,.0f}".format(product.price) }}</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Delete</button>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
